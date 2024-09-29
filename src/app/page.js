@@ -7,7 +7,7 @@ import RenderModel from "@/components/RenderModel";
 import Navigation from "@/components/navigation";
 import dynamic from "next/dynamic";
 
-const Wizard = dynamic(() => import("@/components/models/Wizard"), {
+const Girl = dynamic(() => import("@/components/models/Girl"), {
   ssr: false,
 });
 
@@ -45,10 +45,7 @@ export default function Home() {
         priority
         sizes="100vw"
         src={bg}
-        alt="background-image"
-        fill
-        className="-z-50 w-full h-full object-cover object-center opacity-50"
-      />
+        alt="background-image" fill className="-z-50 w-full h-full object-cover object-center opacity-50"/>
 
       {/* Add greeting text in top-left */}
       <div className="absolute top-5 left-5">
@@ -59,7 +56,7 @@ export default function Home() {
       <div className="w-full h-screen">
         <Navigation />
         <RenderModel>
-          <Wizard />
+          <Girl />
         </RenderModel>
       </div>
 
