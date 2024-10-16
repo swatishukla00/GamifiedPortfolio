@@ -115,8 +115,8 @@ html, body {
 }
 
 .icons img {
-	width: 50px; /* Set the width of the icon */
-	height: 50px; /* Set the height of the icon */
+	width: 35px; /* Set the width of the icon */
+	height: 35px; /* Set the height of the icon */
 	object-fit: cover; /* Maintain aspect ratio */
 	margin-bottom: 15px;
 	border-radius: 50%;
