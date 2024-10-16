@@ -123,7 +123,7 @@ function displayPortfolioInfo(coinsCollected) {
     content = "I am Swati Shukla, an aspiring software developer currently pursuing my MSc in Informatics at the University of Delhi. With a strong academic background in Electronics (BSc Hons.), I possess a solid foundation in programming languages such as Python, C, HTML, and data tools like Tableau. My passion for UX design is complemented by experience in cloud technologies and big data. Through roles like Summer Fellowship Developer and freelance UX Designer, I have applied my skills to real-world projects, including developing virtual labs for remote learning. Eager to bring creativity and technical expertise to innovative software development and UX design projects.";
   } else if (coinsCollected === 3) {
     title = "Experience : ";
-    content = "FRESHERS";
+    content = "FRESHER";
   } else if (coinsCollected === 4) {
     title = "Download Resume";
     content = "Congratulations! You have collected 4 coins. Click the link below to download your resume.";

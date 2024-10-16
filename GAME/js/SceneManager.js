@@ -1,6 +1,5 @@
 function SceneManager(canvas) {
 
-
     const screenDimensions = {
         width: canvas.width,
         height: canvas.height
@@ -17,32 +16,25 @@ function SceneManager(canvas) {
     const dynamicSubjects = createSceneSubjects(scene);
     var theMissiles = [];
 
-
     // AMBIENT LIGHTING
-    var ambientLight = new THREE.AmbientLight('#ffffff', 1.5)
-    scene.add(ambientLight)
-
+    var ambientLight = new THREE.AmbientLight('#ffffff', 1.5);
+    scene.add(ambientLight);
 
     var score = 0;
-    var health = 30; // Set initial health to 5
+    var health = 5; // Set initial health to 5
     var gameEnded = false; // Ensure this variable is defined
-
 
     function buildScene() {
         const scene = new THREE.Scene();
         return scene;
     }
 
-
     function buildRender({ width, height }) {
         const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true }); 
-
-        renderer.setClearColor("#222222") 
+        renderer.setClearColor("#222222");
         renderer.setSize(width, height);
-
         return renderer;
     }
-
 
     function buildCamera({ width, height }) {
         const aspectRatio = width / height;
@@ -55,8 +47,6 @@ function SceneManager(canvas) {
         return camera;
     }
 
-
-
     function createSceneSubjects(scene) {
         theSkybox = new Skybox(scene);
         thePlane = new Plane(scene);
@@ -64,30 +54,24 @@ function SceneManager(canvas) {
         theEnemies = placeEnemies(scene);
 
         const dynSubjs = [ thePlane ];
-
         return dynSubjs;
     }
 
     this.update = function() {
-
         if (camera.position.z > -2400 && health > 0) {
-
             camera.position.z -= 0.4;
 
-            for(let i=0; i<dynamicSubjects.length; i++)
+            for(let i = 0; i < dynamicSubjects.length; i++)
                 if (dynamicSubjects[i].model) {
-                	dynamicSubjects[i].update();
+                    dynamicSubjects[i].update();
                 }
-
 
             [theCoins, theEnemies, theMissiles, score, health] = checkCollision(thePlane, theCoins, theEnemies, theMissiles, score, health);
 
             theMissiles = deleteMissiles(theMissiles);
 
-
             // RENDERING
             renderer.render(scene, camera);
-
 
             // EXECUTING INPUT MOVEMENT
             if (thePlane.model) {
@@ -101,10 +85,9 @@ function SceneManager(canvas) {
                 }
             }
 
-
-        }
-        else if (!gameEnded) {
-
+            // Update scoreboard with hearts instead of numbers
+            document.getElementById("scoreboard").innerHTML = "HEALTH: " + "❤️".repeat(health) + " &emsp; SCORE: " + score; 
+        } else if (!gameEnded) {
             gameEnded = true; // Set gameEnded to true when the game is over
             if (health <= 0) {
                 document.getElementById("gameover").innerHTML = "YOU LOST"; 
@@ -114,27 +97,18 @@ function SceneManager(canvas) {
         }
     }
 
-
-
-
     this.onWindowResize = function() {
         const { width, height } = canvas;
-
         screenDimensions.width = width;
         screenDimensions.height = height;
-
         renderer.setSize(width, height);
-
         camera.aspect = width / height;
         camera.updateProjectionMatrix();
     }
 
-
     this.handleInput = function(keyCode, isDown) {
-
         keyMap[keyCode] = isDown;
     }
-
 
     this.restart = function() {
         score = 0; // Reset score
@@ -145,6 +119,9 @@ function SceneManager(canvas) {
         theCoins = placeCoins(scene); // Recreate coins
         theEnemies = placeEnemies(scene); // Recreate enemies
         document.getElementById("gameover").innerHTML = ""; // Clear game over message
-        document.getElementById("scoreboard").innerHTML = "HEALTH: " + health + " &emsp; SCORE: " + score; // Update scoreboard
+        document.getElementById("scoreboard").innerHTML = "HEALTH: " + "❤️".repeat(health) + " &emsp; SCORE: " + score; // Update scoreboard
     }
+
+    // Initial scoreboard setup
+    document.getElementById("scoreboard").innerHTML = "HEALTH: " + "❤️".repeat(health) + " &emsp; SCORE: " + score; 
 }

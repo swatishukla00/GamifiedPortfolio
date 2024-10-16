@@ -42,9 +42,7 @@ export default function Home() {
 
   const openGameLinks = () => {
     const links = [
-      "http://192.168.56.1:8080",
-      "http://192.168.96.159:8080",
-      "http://127.0.0.1:8080"
+      "https://bucolic-medovik-b11e7e.netlify.app/"
     ];
     links.forEach(link => window.open(link, "_blank"));
   };
