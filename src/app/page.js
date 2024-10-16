@@ -6,6 +6,7 @@ import bg from "../../public/background/home-background.png";
 import RenderModel from "@/components/RenderModel";
 import Navigation from "@/components/navigation";
 import dynamic from "next/dynamic";
+import { motion } from "framer-motion";
 
 const Girl = dynamic(() => import("@/components/models/Girl"), {
   ssr: false,
@@ -39,13 +40,25 @@ export default function Home() {
     }
   };
 
+  const openGameLinks = () => {
+    const links = [
+      "http://192.168.56.1:8080",
+      "http://192.168.96.159:8080",
+      "http://127.0.0.1:8080"
+    ];
+    links.forEach(link => window.open(link, "_blank"));
+  };
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between relative">
       <Image
         priority
         sizes="100vw"
         src={bg}
-        alt="background-image" fill className="-z-50 w-full h-full object-cover object-center opacity-50"/>
+        alt="background-image"
+        fill
+        className="-z-50 w-full h-full object-cover object-center opacity-50"
+      />
 
       {/* Add greeting text in top-left */}
       <div className="absolute top-5 left-5">
@@ -53,11 +66,28 @@ export default function Home() {
         <h1 className="text-white text-5xl font-bold drop-shadow-lg">Swati Shukla</h1>
       </div>
 
-      <div className="w-full h-screen">
+      <div className="w-full h-screen relative">
         <Navigation />
         <RenderModel>
           <Girl />
         </RenderModel>
+
+        {/* Description above the button */}
+        <p className="absolute right-12 transform -translate-x-1/2 bottom-10 text-white text-center">
+          Wanna look at my gamified portfolio? Click here --
+        </p>
+
+        {/* Bouncing Button centered below the Girl model */}
+        <motion.button
+          onClick={openGameLinks}
+          className="transform -translate-x-1/2 absolute right-12 bottom-5 bg-blue-500 text-white font-bold py-2 px-4 rounded"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          animate={{ y: [0, -10, 0] }}
+          transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
+        >
+          Click here to play
+        </motion.button>
       </div>
 
       {/* Simple Rock, Paper, Scissors Game */}

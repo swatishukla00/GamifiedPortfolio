@@ -1,0 +1,17 @@
+{
+  "name": "udta-parinda-main",
+  "version": "1.0.0",
+  "description": "Play the game [here]",
+  "main": "js/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "http-server .",
+    "start": "http-server ."
+  },
+  "keywords": [],
+  "author": "Swati",
+  "license": "ISC",
+  "dependencies": {
+    "three": "^0.169.0"
+  }
+}
