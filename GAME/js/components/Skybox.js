@@ -25,4 +25,3 @@ function Skybox(scene, height) {
 	scene.add(cube)
 
 }
-

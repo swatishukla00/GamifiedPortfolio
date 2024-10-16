@@ -130,7 +130,7 @@ function displayPortfolioInfo(coinsCollected) {
     content += '<a href="SWATI resume.pdf" download style="color: yellow; text-decoration: underline;">Download Resume</a>';
   } else if (coinsCollected === 5) {
     title = "Skills";
-    content = '<div><img src="https://skillicons.dev/icons?i=bootstrap,css,tensorflow,figma,gcp,git,py,androidstudio,opencv,blender,vite,github,html,js,linux,c,cpp,mysql,netlify,nextjs,nodejs,npm,react,tailwind,threejs,vscode&perline=3" alt="SwatiShukla" loading="lazy"/></div>';
+    content = '<div><img src="https://skillicons.dev/icons?i=bootstrap,css,tensorflow,figma,gcp,git,py,androidstudio,opencv,blender,vite,github,html,js,linux,c,cpp,mysql,netlify,nextjs,nodejs,npm,react,tailwind,threejs,vscode&perline=5" alt="SwatiShukla" loading="lazy"/></div>';
   } else if (coinsCollected === 6) {
     title = "GitHub Profile";
     content = "Congratulations! You have collected 6 coins. Click the link below to visit my GitHub profile.";
@@ -191,6 +191,8 @@ function displayPortfolioInfo(coinsCollected) {
   if (title && content) {
     portfolioTitle.innerHTML = title;
     portfolioContent.innerHTML = content;
+    portfolioPopup.classList.add("show");
+    portfolioPopup.classList.remove("hide");
     portfolioPopup.style.display = "block";
     portfolioPopup.style.opacity = 0;
 
@@ -199,10 +201,10 @@ function displayPortfolioInfo(coinsCollected) {
     }, 10);
 
     setTimeout(() => {
-      portfolioPopup.style.opacity = 0;
+      portfolioPopup.classList.add("hide");
       setTimeout(() => {
         portfolioPopup.style.display = "none";
-      }, 9000);
+      }, 900); // Adjusted to match the hide transition
     }, 6000);
   }
 }
