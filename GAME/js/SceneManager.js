@@ -24,7 +24,7 @@ function SceneManager(canvas) {
 
 
     var score = 0;
-    var health = 15; // Set initial health to 5
+    var health = 30; // Set initial health to 5
     var gameEnded = false; // Ensure this variable is defined
 
 

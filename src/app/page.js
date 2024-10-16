@@ -73,9 +73,11 @@ export default function Home() {
         </RenderModel>
 
         {/* Description above the button */}
-        <p className="absolute right-12 transform -translate-x-1/2 bottom-10 text-white text-center">
-          Wanna look at my gamified portfolio? Click here --
-        </p>
+        <div className="absolute right-12 transform -translate-x-1/2 bottom-4 text-center bg-gray-800 bg-opacity-50 p-4 rounded">
+          <p className="text-white">
+            Wanna look at my gamified portfolio? Click here &#8594;
+          </p>
+        </div>
 
         {/* Bouncing Button centered below the Girl model */}
         <motion.button
