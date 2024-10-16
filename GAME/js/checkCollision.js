@@ -111,7 +111,6 @@ function displayPortfolioInfo(coinsCollected) {
   const portfolioPopup = document.getElementById("portfolioPopup");
   const portfolioTitle = document.getElementById("portfolioTitle");
   const portfolioContent = document.getElementById("portfolioContent");
-  
 
   let title = "";
   let content = "";
@@ -119,41 +118,73 @@ function displayPortfolioInfo(coinsCollected) {
   if (coinsCollected === 1) {
     title = "Heyaaa";
     content = "Myself SWATI SHUKLA";
-  } else if (coinsCollected === 3) {
+  } else if (coinsCollected === 2) {
     title = "About : ";
     content = "I am Swati Shukla, an aspiring software developer...";
-  } else if (coinsCollected === 6) {
+  } else if (coinsCollected === 3) {
     title = "Experience : ";
     content = "FRESHERS";
-  } else if (coinsCollected === 8) {
+  } else if (coinsCollected === 4) {
     title = "Download Resume";
-    content =
-      "Congratulations! You have collected 4 coins. Click the link below to download your resume.";
-    content +=
-      '<a href="SWATI resume.pdf" download style="color: yellow; text-decoration: underline;">Download Resume</a>';
-  } else if (coinsCollected === 10) {
+    content = "Congratulations! You have collected 4 coins. Click the link below to download your resume.";
+    content += '<a href="SWATI resume.pdf" download style="color: yellow; text-decoration: underline;">Download Resume</a>';
+  } else if (coinsCollected === 5) {
     title = "Skills";
-    content = '<div><img src="https://skillicons.dev/icons?i=bootstrap,css,tensorflow,figma,gcp,git,py,androidstudio,opencv,blender,vite,github,html,js,linux,c,cpp,mysql,netlify,nextjs,nodejs,npm,react,tailwind,threejs,vscode" alt="SwatiShukla" loading="lazy"/></div>'; // Corrected content assignment
-  } else if (coinsCollected === 11) {
+    content = '<div><img src="https://skillicons.dev/icons?i=bootstrap,css,tensorflow,figma,gcp,git,py,androidstudio,opencv,blender,vite,github,html,js,linux,c,cpp,mysql,netlify,nextjs,nodejs,npm,react,tailwind,threejs,vscode&perline=3" alt="SwatiShukla" loading="lazy"/></div>';
+  } else if (coinsCollected === 6) {
     title = "GitHub Profile";
-    content =
-      "Congratulations! You have collected 6 coins. Click the link below to visit my GitHub profile.";
-    content +=
-      '<a href="https://github.com/swatishukla00" target="_blank" style="color: yellow; text-decoration: underline;">Visit GitHub Profile</a>';
-  } else if (coinsCollected === 12) {
+    content = "Congratulations! You have collected 6 coins. Click the link below to visit my GitHub profile.";
+    content += '<a href="https://github.com/swatishukla00" target="_blank" style="color: yellow; text-decoration: underline;">Visit GitHub Profile</a>';
+  } else if (coinsCollected === 7) {
     title = "Projects";
     content = "<h3>Here are some of my projects:</h3><ul>";
-    // Add project details here...
+    
+    const projectsData = [
+      {
+        id: 1,
+        name: "Stock App UX Design",
+        description: "Created user-friendly designs for a stock trading app",
+        date: "2024-02-01",
+      },
+      {
+        id: 2,
+        name: "Image Processing Web App (Django)",
+        description: "Developed an image processing app with Django",
+        date: "2024-04-04",
+      },
+      {
+        id: 3,
+        name: "Farmers' Website (MERN)",
+        description: "Handled back-end integration for a MERN stack project.",
+        date: "2024-06-06",
+      },
+      {
+        id: 4,
+        name: "Vlabs Development (HTML/CSS)",
+        description: "Developed virtual labs during COVID",
+        date: "2022-05-30",
+      },
+    ];
+
+    projectsData.forEach(project => {
+      content += `<li><strong>${project.name}</strong>: ${project.description} (Date: ${project.date})</li>`;
+    });
+    
+    content += "</ul>"; // Close the unordered list
   }
+
+  // Debugging output
+  console.log("Title:", title);
+  console.log("Content:", content);
 
   // Update the icons based on coins collected
   document.querySelectorAll(".icons").forEach((iconDiv, index) => {
     if (index < coinsCollected) {
-      iconDiv.classList.remove("locked"); // Remove locked class for unlocked coins
-      iconDiv.classList.add("unlocked"); // Add unlocked class for visual effect
+      iconDiv.classList.remove("locked");
+      iconDiv.classList.add("unlocked");
     } else {
-      iconDiv.classList.remove("unlocked"); // Remove unlocked class for locked coins
-      iconDiv.classList.add("locked"); // Add locked class for visual effect
+      iconDiv.classList.remove("unlocked");
+      iconDiv.classList.add("locked");
     }
   });
 
@@ -171,7 +202,7 @@ function displayPortfolioInfo(coinsCollected) {
       portfolioPopup.style.opacity = 0;
       setTimeout(() => {
         portfolioPopup.style.display = "none";
-      }, 2000);
+      }, 9000);
     }, 6000);
   }
 }
